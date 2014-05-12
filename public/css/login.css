@@ -1,0 +1,59 @@
+@import url("reset.css");
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	background: #DDD;
+	display: table; 
+	margin: 0 auto;
+	height: 100%;
+}
+
+#container {
+	height: 100%;
+	width: 100%;
+    display: table-cell;   
+    vertical-align: top;
+}
+
+.flash {
+	color: #000;
+	border: 1px dotted #CCC;
+	padding: 15px;
+	text-align: center;
+	max-width: 320px;
+	width: 100%;
+	margin: 0 auto;
+	background: #0C0;
+	border-radius: 0px 0px 5px 5px;
+}
+
+#login {
+	width: 100%;
+	max-width: 320px;	
+	border-radius: 5px;
+	border: 1px solid #000;
+	margin: 0 auto;
+	padding: 15px;	
+	background: #FFF;
+	margin-top: 150px;
+}
+
+#login h1 {
+	padding: 0px;
+	margin: 0px;
+	font-size: 24px;
+	text-align: center;
+}
+
+#login label {
+	clear: both;
+	max-width: 100%;
+	width: 100%;
+	font-weight: bold;
+}
+
+#login input {
+	clear: both;
+	max-width: 100%;
+	width: 100%;
+}
