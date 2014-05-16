@@ -20,7 +20,13 @@
       </ul>
 @endif
   {{ Form::label("category_id", "Category") }}
-  {{ Form::text("category_id") }}
+  <select name="category_id">
+	<?php
+    foreach ($categories as $category) {
+	?>
+    <option value="<?php echo $category->id; ?>" <?php if ($article->category_id == $category->id) { echo 'selected="selected"'; } ?>><?php echo $category->title; ?></option>
+	<?php } ?>
+  </select>
   {{ Form::label("title", "Title") }}
   {{ Form::text("title") }}
   {{ Form::label("body", "Body") }}

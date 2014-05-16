@@ -61,6 +61,7 @@ class AdminController extends BaseController {
 	
 	public function articleedit($id)
 	{
+		$categories = DB::table('categories')->get();
 		$article = Articles::find($id);
 		$input = Input::all();
 		if (!empty($input)) {
@@ -85,7 +86,7 @@ class AdminController extends BaseController {
 			return Redirect::back()->with('flash_message', 'Article errors.')->withErrors($validation);
 		}
 		}
-		return View::make('admin.articleedit')->with('article', $article);	
+		return View::make('admin.articleedit', compact('categories'))->with('article', $article)->with('categories', $categories);	
 	}
 	
 	public function articledelete($id)

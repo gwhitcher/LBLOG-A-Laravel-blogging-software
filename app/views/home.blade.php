@@ -12,7 +12,7 @@
 @foreach ($articles as $article_object)
 @foreach ($article_object as $article)
 <article>
-<h2><a href="{{ Config::get('lblog_config.BASE_URL') }}/blog/{{ $article->id }}/{{ $article->slug }}">{{ $article->title }}</a></h2>
+<h2><a href="{{ Config::get('lblog_config.BASE_URL') }}/post/{{ $article->id }}/{{ $article->slug }}">{{ $article->title }}</a></h2>
 {{ $article->body }}
 </article>
 @endforeach

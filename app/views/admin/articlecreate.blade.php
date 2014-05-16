@@ -20,9 +20,13 @@
       </ul>
 @endif
 	{{ Form::label("category_id", "Category") }}
-	@foreach ($categories as $category)
-	{{ Form::select('category_id', array($category->id => $category->title)) }}
-	@endforeach
+    <select name="category_id">
+	<?php
+    foreach ($categories as $category) {
+	?>
+    <option value="<?php echo $category->id; ?>"><?php echo $category->title; ?></option>
+	<?php } ?>
+	</select>
 	{{ Form::label("title", "Title") }}
 	{{ Form::text("title") }}
 	{{ Form::label("body", "Body") }}

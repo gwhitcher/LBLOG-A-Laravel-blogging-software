@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', 'ArticlesController@index');
-Route::get('blog/{id}/{slug}', 'ArticlesController@show');
+Route::get('post/{id}/{slug}', 'ArticlesController@show');
 Route::get('category/{slug}', 'ArticlesController@categories');
 
 Route::get('dashboard', 'SessionsController@dashboard')->before('auth');

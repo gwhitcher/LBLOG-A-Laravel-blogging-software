@@ -1,9 +1,11 @@
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 {{ HTML::style('css/admin.css'); }}
 {{ HTML::style('css/ui-lightness/jquery-ui-1.10.4.min.css'); }}
 {{ HTML::script('js/jquery-1.10.2.js'); }}
 {{ HTML::script('js/jquery-ui-1.10.4.min.js'); }}
+{{ HTML::script('js/tinymce/tinymce.min.js'); }}
 {{ HTML::script('js/default.js'); }}
 </head>
 <body>
