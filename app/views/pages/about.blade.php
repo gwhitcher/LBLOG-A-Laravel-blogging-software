@@ -1,4 +1,4 @@
-@extends('layouts/layout')
+@extends((isset($layout)) ? $layout : 'layouts.core')
 
 @section('header')
 @parent
