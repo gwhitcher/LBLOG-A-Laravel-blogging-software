@@ -40,7 +40,7 @@ class AdminController extends BaseController {
 			$article = new Articles;
 			$file = Input::file('featured');
 			if (!empty($file)) { 
-			$destination = public_path().'/images/posts/';
+			$destination = public_path().'/images/posts/featured/';
    			$filename = $file->getClientOriginalName();
    			$extension = $file->getClientOriginalExtension(); 
   			$upload_success = $file->move($destination, $filename); 
@@ -70,7 +70,7 @@ class AdminController extends BaseController {
         {
 			$file = Input::file('featured');
 			if (!empty($file)) { 
-			$destination = public_path().'/images/posts/';
+			$destination = public_path().'/images/posts/featured/';
    			$filename = $file->getClientOriginalName();
    			$extension = $file->getClientOriginalExtension(); 
   			$upload_success = $file->move($destination, $filename); 
