@@ -1,37 +1,59 @@
 <?php
 
 class SessionsController extends BaseController {
-
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
+	
+	public function login()
 	{
-		return View::make('sessions.index');
+		return View::make('admin.login');
 	}
 	
-	public function dashboard()
+	public function users()
 	{
-		return View::make('sessions.index');
+		$users = array(User::all());
+		return View::make('admin.users')->with('users', $users);
+	}
+	
+	public function usercreate() 
+	{
+		$input = Input::all();
+		if (!empty($input)) {
+		$validation = User::validate($input);
+		if  ($validation->fails()) {
+			Input::flash();
+			return Redirect::to('/admin/dashboard')->with('flash_message', 'User errors.')->withErrors($validation);
+		} else {	
+			$user = new User;
+			$user->username = $input['username'];
+			$user->email = $input['email'];
+			$user->password = Hash::make($input['password']);
+			$user->save();
+			return Redirect::to('/admin/dashboard')->with('flash_message', 'User created.');
+		}
+		}
+		return View::make('admin.usercreate');
+	}
+	
+	public function useredit($id)
+	{
+		$user = User::find($id);
+		$input = Input::all();
+		if (!empty($input)) {
+		$validation = User::validate($input);
+        if ($validation->passes())
+        {
+			$user->username = $input['username'];
+			$user->email = $input['email'];
+			$user->password = Hash::make($input['password']);
+			$user->update($input);
+            return Redirect::to('/admin/dashboard')->with('user', $user)->with('flash_message', 'User updated.');
+        } else {
+			Input::flash();
+			return Redirect::back()->with('flash_message', 'User errors.')->withErrors($validation);
+		}
+		}
+		return View::make('admin.useredit')->with('user', $user);	
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return View::make('sessions.create');
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
 	public function store()
 	{
 		$input = Input::all();
@@ -41,18 +63,12 @@ class SessionsController extends BaseController {
 			'password' => $input['password']
 		]);
 		
-		if ($attempt) return Redirect::intended('/dashboard')->with('flash_message', 'You have been logged in!');
+		if ($attempt) return Redirect::intended('/admin/dashboard')->with('flash_message', 'You have been logged in!');
 		
 		return Redirect::back()->with('flash_message', 'Invalid login credentials!')->withInput();
 		
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function destroy()
 	{
 		Auth::logout();

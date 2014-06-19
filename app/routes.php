@@ -10,14 +10,9 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('/', 'ArticlesController@index');
-Route::get('post/{id}/{slug}', 'ArticlesController@show');
-Route::get('category/{slug}', 'ArticlesController@categories');
-
-Route::get('dashboard', 'SessionsController@dashboard')->before('auth');
-
-Route::get('admin/user/{id}', 'AdminController@user')->before('auth');
-Route::get('admin/user/edit/{id}', 'AdminController@user_edit')->before('auth');
+Route::get('/', array('as' => 'home', 'uses' => 'ArticlesController@index'));
+Route::get('post/{id}/{slug}', array('as' => 'post', 'uses' => 'ArticlesController@show'));
+Route::get('category/{slug}', array('as' => 'category', 'uses' => 'ArticlesController@categories'));
 
 Route::any('admin/articles', array('as' => 'admin.articles', 'uses' => 'AdminController@articles'))->before('auth');
 Route::any('admin/article/create', array('as' => 'admin.articlecreate', 'uses' => 'AdminController@articlecreate'))->before('auth');
@@ -44,8 +39,20 @@ Route::any('admin/sidebar/create', array('as' => 'admin.sidebarcreate', 'uses' =
 Route::any('admin/sidebar/edit/{id}', array('as' => 'admin.sidebaredit', 'uses' => 'AdminController@sidebaredit'))->before('auth');
 Route::any('admin/sidebar/delete/{id}', array('as' => 'admin.sidebardelete', 'uses' => 'AdminController@sidebardelete'))->before('auth');
 
-Route::get('login', 'SessionsController@create');
+
+Route::get('admin/dashboard', 'AdminController@dashboard')->before('auth');
+
+Route::any('admin/users', array('as' => 'admin.users', 'uses' => 'SessionsController@users'))->before('auth');
+Route::any('admin/user/create', array('as' => 'admin.usercreate', 'uses' => 'SessionsController@usercreate'))->before('auth');
+Route::any('admin/user/edit/{id}', array('as' => 'admin.useredit', 'uses' => 'SessionsController@useredit'))->before('auth');
+Route::get('admin', 'SessionsController@login');
+Route::get('login', 'SessionsController@login');
 Route::get('logout', 'SessionsController@destroy');
 Route::resource('sessions', 'SessionsController');
 
-Route::get('about', 'PagesController@about');
+//Contact Page
+Route::get('contact', 'ContactController@getContact');
+//Form request:: POST action will trigger to controller
+Route::post('contact_request','ContactController@getContactUsForm');
+
+Route::get('/{slug}', array('as' => 'page', 'uses' => 'PagesController@show'));

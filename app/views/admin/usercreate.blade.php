@@ -29,5 +29,6 @@
 	{{ Form::close() }}
 @stop
 
-@section('content')
+@section('footer')
+@parent
 @stop

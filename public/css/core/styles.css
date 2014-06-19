@@ -1,0 +1,195 @@
+/* MAIN STYLES */
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;	
+}
+
+a:link, a:visited {
+    text-decoration: none;
+	color: #900;
+	-webkit-transition: ease 0.2s;
+    -moz-transition: ease 0.2s;
+    -o-transition: ease 0.2s;
+    transition: ease 0.2s;
+}
+
+a:hover {
+    text-decoration: underline;
+	color: #CCC;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.clear {
+	clear: both;
+}
+
+img {
+    max-width:100%;
+    height:auto;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	padding: 0px;
+	margin: 0px;
+}
+
+.floatright {
+	float: right;
+	margin-left: 5px;
+}
+
+.floatleft {
+	float: left;	
+	margin-right: 5px;
+}
+
+/* FORM STYLES */
+label {
+	font-weight: bold;
+	clear: both;
+	float: left;
+}
+
+input, textarea, select {
+	float: left;
+	clear: both;
+	margin-bottom: 10px;
+}
+
+.errors {
+	color: #900;	
+}
+
+/* FLASH MESSAGE */
+
+.flash {
+	color: #000;
+	border: 1px dotted #545454;
+	padding: 15px;
+	text-align: center;
+	max-width: 320px;
+	width: 100%;
+	margin: 0 auto;
+	background: #747474;
+	border-radius: 0px 0px 5px 5px;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+}
+
+/* FRAME */
+#container {
+	max-width: 1024px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+#header {
+	max-width: 1024px;
+	width: 100%;
+	clear: both;	
+}
+
+#content {
+	float: left;
+	width: 100%;
+	max-width: 80%;
+}
+#sidebar {
+	float: right;
+	width: 100%;
+	max-width: 20%;
+}
+
+#footer {
+	clear: both;
+}
+
+#nav {
+	clear: both;
+	max-width: 100%;
+	width: 100%;
+	float: left;
+}
+
+
+/* HEADER */
+#header h1 {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#header h2 {
+	font-size: 12px;
+}
+
+/* NAVIGATION */
+#nav ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+#nav li {
+	float: left;
+	padding-right: 5px;
+}
+
+/* SIDEBAR */
+.sidebar_item {
+	max-width: 100%;
+	width: 100%;	
+}
+
+.sidebar_item .sidebar_title {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/* CONTENT */
+#content {
+		
+}
+
+/* ARTICLES */
+article {
+	clear: both;
+	margin-bottom: 10px;
+}
+
+article h2 {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.pagination-right {
+	float: right;
+}
+
+.pagination {
+	clear: both;
+}
+
+.pagination ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+.pagination li {
+	float: left;
+	padding-right: 5px;
+}
+
+/* FOOTER */
+#footer {
+	padding: 10px 0px 10px 0px;
+}
+
+#footer p.copyright {
+	font-size: 12px;
+}

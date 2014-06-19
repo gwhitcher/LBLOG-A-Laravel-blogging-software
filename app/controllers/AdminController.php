@@ -2,22 +2,10 @@
 
 class AdminController extends BaseController {
 	
-	
-	/* USERS */
-	public function user($id)
+	/* ADMIN HOME */
+	public function dashboard()
 	{
-		$users = Admin::user($id);
-		return View::make('sessions.show')->with('users', $users);
-	}
-	
-	public function user_edit($id)
-	{
-		$user = Admin::user($id);
-        if (is_null($user))
-        {
-            return Redirect::route('/dashboard')->with('flash_message', 'User does not exist!');
-        }
-        return View::make('sessions.edit')->with('user', $user);	
+		return View::make('sessions.index');
 	}
 	
 	/* ARTICLES */
@@ -53,7 +41,7 @@ class AdminController extends BaseController {
 			$article->metadescription = $input['metadescription'];
 			$article->metakeywords = $input['metakeywords'];
 			$article->save();
-			return Redirect::to('/dashboard')->with('flash_message', 'Article created.');
+			return Redirect::to('/admin/dashboard')->with('flash_message', 'Article created.');
 		}
 		}
 		return View::make('admin.articlecreate')->with('categories', $categories);
@@ -80,7 +68,7 @@ class AdminController extends BaseController {
 			}
 			$article->slug = Str::slug($input['title']);
 			$article->update($input);
-            return Redirect::to('/dashboard')->with('article', $article)->with('flash_message', 'Article updated.');
+            return Redirect::to('/admin/dashboard')->with('article', $article)->with('flash_message', 'Article updated.');
         } else {
 			Input::flash();
 			return Redirect::back()->with('flash_message', 'Article errors.')->withErrors($validation);
@@ -93,7 +81,7 @@ class AdminController extends BaseController {
 	{
 		$article = Articles::find($id);
 		$article->delete();
-		return Redirect::intended('/dashboard')->with('flash_message', 'Article deleted.');
+		return Redirect::intended('/admin/dashboard')->with('flash_message', 'Article deleted.');
 	}
 	
 	/* CATEGORIES */
@@ -118,7 +106,7 @@ class AdminController extends BaseController {
 			$category->metadescription = $input['metadescription'];
 			$category->metakeywords = $input['metakeywords'];
 			$category->save();
-			return Redirect::to('/dashboard')->with('flash_message', 'Category created.');
+			return Redirect::to('/admin/dashboard')->with('flash_message', 'Category created.');
 		}
 		}
 		return View::make('admin.categorycreate');
@@ -134,7 +122,7 @@ class AdminController extends BaseController {
         {
 			$category->slug = Str::slug($input['title']);
 			$category->update($input);
-            return Redirect::to('/dashboard')->with('category', $category)->with('flash_message', 'Category updated.');
+            return Redirect::to('/admin/dashboard')->with('category', $category)->with('flash_message', 'Category updated.');
         } else {
 			Input::flash();
 			return Redirect::back()->with('flash_message', 'Category errors.')->withErrors($validation);
@@ -147,7 +135,7 @@ class AdminController extends BaseController {
 	{
 		$category = Categories::find($id);
 		$category->delete();
-		return Redirect::intended('/dashboard')->with('flash_message', 'Category deleted.');
+		return Redirect::intended('/admin/dashboard')->with('flash_message', 'Category deleted.');
 	}
 	
 	/* PAGES */
@@ -173,7 +161,7 @@ class AdminController extends BaseController {
 			$page->metadescription = $input['metadescription'];
 			$page->metakeywords = $input['metakeywords'];
 			$page->save();
-			return Redirect::to('/dashboard')->with('flash_message', 'Page created.');
+			return Redirect::to('/admin/dashboard')->with('flash_message', 'Page created.');
 		}
 		}
 		return View::make('admin.pagecreate');
@@ -189,7 +177,7 @@ class AdminController extends BaseController {
         {
 			$page->slug = Str::slug($input['title']);
 			$page->update($input);
-            return Redirect::to('/dashboard')->with('page', $page)->with('flash_message', 'Page updated.');
+            return Redirect::to('/admin/dashboard')->with('page', $page)->with('flash_message', 'Page updated.');
         } else {
 			Input::flash();
 			return Redirect::back()->with('flash_message', 'Page errors.')->withErrors($validation);
@@ -202,7 +190,7 @@ class AdminController extends BaseController {
 	{
 		$page = Pages::find($id);
 		$page->delete();
-		return Redirect::intended('/dashboard')->with('flash_message', 'Page deleted.');
+		return Redirect::intended('/admin/dashboard')->with('flash_message', 'Page deleted.');
 	}
 	
 	/* NAVIGATION */
@@ -225,7 +213,7 @@ class AdminController extends BaseController {
 			$nav->title = $input['title'];
 			$nav->url = $input['url'];
 			$nav->save();
-			return Redirect::to('/dashboard')->with('flash_message', 'Nav created.');
+			return Redirect::to('/admin/dashboard')->with('flash_message', 'Nav created.');
 		}
 		}
 		return View::make('admin.navcreate');
@@ -240,7 +228,7 @@ class AdminController extends BaseController {
         if ($validation->passes())
         {
 			$nav->update($input);
-            return Redirect::to('/dashboard')->with('nav', $nav)->with('flash_message', 'Nav updated.');
+            return Redirect::to('/admin/dashboard')->with('nav', $nav)->with('flash_message', 'Nav updated.');
         } else {
 			Input::flash();
 			return Redirect::back()->with('flash_message', 'Nav errors.')->withErrors($validation);
@@ -253,7 +241,7 @@ class AdminController extends BaseController {
 	{
 		$nav = Nav::find($id);
 		$nav->delete();
-		return Redirect::intended('/dashboard')->with('flash_message', 'Nav item deleted.');
+		return Redirect::intended('/admin/dashboard')->with('flash_message', 'Nav item deleted.');
 	}
 	
 	/* SIDEBAR */
@@ -277,7 +265,7 @@ class AdminController extends BaseController {
 			$sidebar->body = $input['body'];
 			$sidebar->position = $input['position'];
 			$sidebar->save();
-			return Redirect::to('/dashboard')->with('flash_message', 'Sidebar created.');
+			return Redirect::to('/admin/dashboard')->with('flash_message', 'Sidebar created.');
 		}
 		}
 		return View::make('admin.sidebarcreate');
@@ -292,7 +280,7 @@ class AdminController extends BaseController {
         if ($validation->passes())
         {
 			$sidebar->update($input);
-            return Redirect::to('/dashboard')->with('sidebar', $sidebar)->with('flash_message', 'Sidebar updated.');
+            return Redirect::to('/admin/dashboard')->with('sidebar', $sidebar)->with('flash_message', 'Sidebar updated.');
         } else {
 			Input::flash();
 			return Redirect::back()->with('flash_message', 'Sidebar errors.')->withErrors($validation);
@@ -305,6 +293,6 @@ class AdminController extends BaseController {
 	{
 		$sidebar = Sidebar::find($id);
 		$sidebar->delete();
-		return Redirect::intended('/dashboard')->with('flash_message', 'Sidebar deleted.');
+		return Redirect::intended('/admin/dashboard')->with('flash_message', 'Sidebar deleted.');
 	}
 }

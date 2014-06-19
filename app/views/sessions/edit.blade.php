@@ -10,7 +10,7 @@
 
 @section('content')
 <h1>Edit User</h1>
-  {{ Form::open(array('route' => 'sessions.edit', $user->id)) }}
+  {{ Form::open(array('route' => 'admin.useredit', $user->id)) }}
   {{ Form::label("username", "Username") }}
   {{ Form::text("username") }}
   {{ Form::label("email", "Email") }}

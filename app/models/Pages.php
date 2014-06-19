@@ -26,7 +26,7 @@ class Pages extends Eloquent {
 		return DB::table('pages')->orderBy('id', 'desc')->paginate(30);
 	}
 	
-	public static function show($id, $slug)
+	public static function show($slug)
 	{
 		return DB::table('pages')->where('slug', '=', $slug)->get();
 	}

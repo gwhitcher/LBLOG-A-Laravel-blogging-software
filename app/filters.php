@@ -78,3 +78,19 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+/*
+|--------------------------------------------------------------------------
+| Custom 404
+|--------------------------------------------------------------------------
+|
+| A custom 404 page handler.
+|
+*/
+
+App::missing(function($exception)
+{
+    $nav_items = Nav::all();
+	$sidebar_items = Sidebar::orderBy('position', 'ASC')->get();
+	return View::make('errors.missing', array('nav_items' => $nav_items, 'sidebar_items' => $sidebar_items))->with('layout', 'layouts.'.Config::get('lblog_config.theme'));
+});

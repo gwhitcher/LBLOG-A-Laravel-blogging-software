@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 {{ HTML::style('css/login.css'); }}
 {{ HTML::script('js/default.js'); }}
 </head>
