@@ -1,4 +1,4 @@
-Install by:
+**Install by:**
 
 
 Setup database file in /app/config/database.php
