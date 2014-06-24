@@ -45,6 +45,10 @@ body {
 	margin: 0px;
 }
 
+#header #view_website {
+	font-size: 12px;	
+}
+
 /* SIDEBAR */
 
 #sidebar {
@@ -126,11 +130,15 @@ body {
 	margin-bottom: 2px;
 }
 
-#content input, #content textarea {
+#content input, #content textarea, #content select {
 	clear: both;
 	max-width: 100%;
 	display: block;
 	margin-bottom: 10px;
+}
+
+#content .mce-tinymce {
+	margin-bottom: 10px;	
 }
 
 #content .addnew { 
@@ -139,6 +147,13 @@ body {
 	font-weight: bold;
 	width: 100%;
 	max-width: 100%;
+	float: left;
+}
+
+#content .view_item {
+	padding-bottom: 10px;
+	width: 100%;
+	clear: both;
 	float: left;
 }
 

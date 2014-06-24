@@ -27,11 +27,54 @@ if (isset($_SERVER['HTTP_USER_AGENT']) &&
         header('X-UA-Compatible: IE=edge,chrome=1');
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="{{ Config::get('lblog_config.meta_description') }}" />
-<meta name="keywords" content="{{ Config::get('lblog_config.meta_keywords') }}" />
+<?php if ($name == 'post') {
+	if (!empty($article->metadescription)) {
+		echo '<meta name="description" content="'.$article->metadescription.'" />';
+	} else {
+		echo '<meta name="description" content="'.Config::get('lblog_config.metadescription');
+	}
+	if (!empty($article->metakeywords)) {
+		echo '<meta name="keywords" content="'.$article->metakeywords.'" />';	
+	} else {	
+		echo '<meta name="keywords" content="'.Config::get('lblog_config.metakeywords').'" />';
+	}	
+} elseif ($name == 'category') {
+	if (!empty($category->metadescription)) {
+		echo '<meta name="description" content="'.$category->metadescription.'" />';
+	} else {
+		echo '<meta name="description" content="'.Config::get('lblog_config.metadescription').'" />';
+	}
+	if (!empty($category->metakeywords)) {
+		echo '<meta name="keywords" content="'.$category->metakeywords.'" />';	
+	} else {	
+		echo '<meta name="keywords" content="'.Config::get('lblog_config.metakeywords').'" />';
+	}				
+} elseif ($name == 'home') {
+	echo '<meta name="description" content="'.Config::get('lblog_config.metadescription').'" />';	
+	echo '<meta name="keywords" content="'.Config::get('lblog_config.metakeywords').'" />';	
+} elseif ($name == 'page') {
+	if (!empty($page->metadescription)) {
+		echo '<meta name="description" content="'.$page->metadescription.'" />';
+	} else {
+		echo '<meta name="description" content="'.Config::get('lblog_config.metadescription').'" />';
+	}
+	if (!empty($page->metakeywords)) {
+		echo '<meta name="keywords" content="'.$page->metakeywords.'" />';	
+	} else {	
+		echo '<meta name="keywords" content="'.Config::get('lblog_config.metakeywords').'" />';
+	}
+} else {
+	echo '<meta name="description" content="'.Config::get('lblog_config.metadescription').'" />';	
+	echo '<meta name="keywords" content="'.Config::get('lblog_config.metakeywords').'" />';
+}
+?>
 <link href="{{ Config::get('lblog_config.BASE_URL') }}/favicon.ico" type="image/x-icon" rel="icon" />
 {{ HTML::style('css/core/styles.css'); }}
+{{ HTML::style('css/core/slider.css'); }}
+{{ HTML::script('js/jquery.js'); }}
+{{ HTML::script('js/jquery-ui.js'); }}
 {{ HTML::script('js/default.js'); }}
+{{ HTML::script('js/slider.js'); }}
 </head>
 <body>
 <div id="container">
@@ -48,6 +91,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) &&
     @endforeach
 </ul>
 </nav>
+@yield('slider')
 <aside id="sidebar">
 @section('sidebar')
 <?php foreach ($sidebar_items as $sidebar): ?>

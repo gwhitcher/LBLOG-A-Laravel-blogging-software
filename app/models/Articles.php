@@ -17,7 +17,7 @@ class Articles extends Eloquent {
 	
 	public static function index()
 	{
-		return DB::table('articles')->orderBy('id', 'desc')->paginate(Config::get('lblog_config.articles_per_page'));
+		return DB::table('articles')->where('status', '=', 0)->orderBy('id', 'desc')->paginate(Config::get('lblog_config.articles_per_page'));
 	}
 	
 	public static function admin_articles()
@@ -33,6 +33,6 @@ class Articles extends Eloquent {
 	public static function categories($slug)
 	{
 		$category = DB::table('categories')->where('slug', '=', $slug)->first();
-		return DB::table('articles')->where('category_id', '=', $category->id)->orderBy('id', 'desc')->paginate(Config::get('lblog_config.articles_per_page'));
+		return DB::table('articles')->where('status', '=', 0)->where('category_id', '=', $category->id)->orderBy('id', 'desc')->paginate(Config::get('lblog_config.articles_per_page'));
 	}
 }

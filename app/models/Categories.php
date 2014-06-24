@@ -17,7 +17,7 @@ class Categories extends Eloquent {
 	
 	public static function index()
 	{
-		return DB::table('categories')->orderBy('id', 'desc')->paginate(Config::get('lblog_config.articles_per_page'));
+		return DB::table('categories')->where('status', '=', 0)->orderBy('id', 'desc')->paginate(Config::get('lblog_config.articles_per_page'));
 	}
 	
 	public static function admin_categories()

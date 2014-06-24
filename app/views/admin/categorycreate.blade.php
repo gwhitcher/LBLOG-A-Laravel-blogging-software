@@ -21,9 +21,9 @@
 @endif
 	{{ Form::label("title", "Title") }}
 	{{ Form::text("title") }}
-	{{ Form::label("metadescription", "Meta Description") }}
+	{{ Form::label("metadescription", "Meta Description") }} (leave blank for default)
 	{{ Form::text("metadescription") }}
-	{{ Form::label("metakeywords", "Meta Keywords") }}
+	{{ Form::label("metakeywords", "Meta Keywords") }} (leave blank for default, seperate each by comma)
 	{{ Form::text("metakeywords") }}
 	{{ Form::submit('Create') }}
 	{{ Form::close() }}

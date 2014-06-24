@@ -7,5 +7,6 @@ return array(
 	'meta_keywords' => 'PHP, Laravel, Open Source Blog, George Whitcher',
 	'lblog_version' => '1.2',
 	'articles_per_page' => 5,
+	'slider' => 1, // 0 = inactive, 1 = active
 	'theme' => 'core'
 );

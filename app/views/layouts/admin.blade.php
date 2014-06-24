@@ -44,7 +44,9 @@
 </div>
 <footer id="footer">
 @section('footer')
-<p class="copyright">&copy; Copyright <?php echo date('Y'); ?> {{ Config::get('lblog_config.title') }} - Powered by <a href="http://lblog.georgewhitcher.com" target="_blank">LBlog {{ Config::get('lblog_config.lblog_version') }}</a></p>
+<p class="copyright">&copy; Copyright <?php echo date('Y'); ?> {{ Config::get('lblog_config.title') }} - Powered by <a href="http://lblog.georgewhitcher.com" target="_blank">LBlog {{ Config::get('lblog_config.lblog_version') }}</a>
+<br>
+<div id="view_website"><a href="{{ Config::get('lblog_config.BASE_URL') }}" target="_blank">View Website</a></div></p>
 @show
 </footer>
 </div>

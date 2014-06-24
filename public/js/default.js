@@ -31,6 +31,6 @@ tinymce.init({
   // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
   // ===========================================
 	
-  relative_urls: false
+  relative_urls: false,
 	
 });

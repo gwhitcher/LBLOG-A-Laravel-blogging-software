@@ -23,6 +23,7 @@ class CreateArticlesTable extends Migration {
 			$table->text('metadescription');
 			$table->text('metakeywords');
 			$table->integer('slider');
+			$table->integer('status');
 			$table->timestamps();
 		});
 	}

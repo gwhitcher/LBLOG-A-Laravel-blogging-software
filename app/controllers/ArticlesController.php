@@ -7,8 +7,9 @@ class ArticlesController extends BaseController {
 		$nav_items = Nav::all();
 		$sidebar_items = Sidebar::orderBy('position', 'ASC')->get();
 		$articles = Articles::index();
+		$slider_articles = Articles::where('slider', 1)->get();
 		$page = 'themes.'.''.Config::get('lblog_config.theme').'.home';
-		return View::make($page, array('nav_items' => $nav_items, 'sidebar_items' => $sidebar_items, 'articles' => $articles))->with('layout', 'layouts.'.Config::get('lblog_config.theme'));
+		return View::make($page, array('nav_items' => $nav_items, 'sidebar_items' => $sidebar_items, 'articles' => $articles, 'slider_articles' => $slider_articles))->with('layout', 'layouts.'.Config::get('lblog_config.theme'));
 	}
 
 	public function show($id, $slug)

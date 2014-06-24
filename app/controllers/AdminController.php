@@ -40,6 +40,8 @@ class AdminController extends BaseController {
 			$article->body = $input['body'];
 			$article->metadescription = $input['metadescription'];
 			$article->metakeywords = $input['metakeywords'];
+			$article->slider = $input['slider'];
+			$article->status = $input['status'];
 			$article->save();
 			return Redirect::to('/admin/dashboard')->with('flash_message', 'Article created.');
 		}
@@ -66,7 +68,14 @@ class AdminController extends BaseController {
 			} else {
 			$input['featured'] = $article->featured;	
 			}
+			$article->title = $input['title'];
 			$article->slug = Str::slug($input['title']);
+			$article->category_id = $input['category_id'];
+			$article->body = $input['body'];
+			$article->metadescription = $input['metadescription'];
+			$article->metakeywords = $input['metakeywords'];
+			$article->slider = $input['slider'];
+			$article->status = $input['status'];
 			$article->update($input);
             return Redirect::to('/admin/dashboard')->with('article', $article)->with('flash_message', 'Article updated.');
         } else {

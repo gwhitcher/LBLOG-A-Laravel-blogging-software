@@ -33,12 +33,14 @@
 	{{ Form::textarea("body") }}
 	{{ Form::label("featured", "Featured") }}
 	{{ Form::file("featured") }}
-	{{ Form::label("metadescription", "Meta Description") }}
+	{{ Form::label("metadescription", "Meta Description") }} (leave blank for default)
 	{{ Form::text("metadescription") }}
-	{{ Form::label("metakeywords", "Meta Keywords") }}
+	{{ Form::label("metakeywords", "Meta Keywords") }} (leave blank for default, seperate each by comma)
 	{{ Form::text("metakeywords") }}
 	{{ Form::label("slider", "Slider") }}
-	{{ Form::text("slider") }}
+	{{ Form::select('slider',array('0'=>'Disabled','1'=>'Enabled')) }}
+    {{ Form::label("status", "Status") }}
+	{{ Form::select('status',array('0'=>'Published','1'=>'Draft')) }}
 	{{ Form::submit('Create') }}
 	{{ Form::close() }}
 @stop
