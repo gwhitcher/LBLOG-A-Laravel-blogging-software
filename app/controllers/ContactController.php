@@ -4,7 +4,7 @@ class ContactController extends BaseController {
 
 //Server Contact view:: we will create view in next step
  public function getContact(){
-	 		$nav_items = Nav::all();
+	 		$nav_items = Nav::orderBy('position', 'ASC')->get();
 			$sidebar_items = Sidebar::orderBy('position', 'ASC')->get();
 			$page = 'themes.'.''.Config::get('lblog_config.theme').'.contact';
             return View::make($page, array('nav_items' => $nav_items, 'sidebar_items' => $sidebar_items))->with('layout', 'layouts.'.Config::get('lblog_config.theme'));
@@ -15,7 +15,7 @@ class ContactController extends BaseController {
 
             //Get all the data and store it inside Store Variable
             $data = Input::all();
-			$nav_items = Nav::all();
+			$nav_items = Nav::orderBy('position', 'ASC')->get();
 			$sidebar_items = Sidebar::orderBy('position', 'ASC')->get();
 			$page = 'themes.'.''.Config::get('lblog_config.theme').'.contact';
             //Validation rules

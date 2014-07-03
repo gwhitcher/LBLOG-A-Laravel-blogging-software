@@ -11,20 +11,12 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		$this->call('CreateUser');
+		$this->call('UsersTableSeeder');
+		$this->call('ArticlesTableSeeder');
+		$this->call('CategoriesTableSeeder');
+		$this->call('NavTableSeeder');
+		$this->call('PagesTableSeeder');
+		$this->call('SidebarTableSeeder');
 	}
 
-}
-
-class CreateUser extends Seeder {
-	public function run()
-    {
-        DB::table('users')->insert(array(
-          'username' => 'admin',
-          'email' => 'admin@admin.com',
-          'password' => Hash::make('password'),
-		  'created_at' => date('Y-m-d H:i:s'),
-		  'updated_at' => date('Y-m-d H:i:s')
-          ));
-    }	
 }

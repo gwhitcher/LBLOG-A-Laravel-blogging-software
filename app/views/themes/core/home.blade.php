@@ -15,7 +15,6 @@
 <li><a href="{{ Config::get('lblog_config.BASE_URL') }}/post/{{ $sarticle->id }}/{{ $sarticle->slug }}"><img class="featured" src="{{ Config::get('lblog_config.BASE_URL') }}/images/posts/featured/{{ $sarticle->featured }}" alt="{{ $sarticle->title }}" /></a></li>
 <?php } ?>
 @endforeach	
-<li>test</li>
   </ul>  
 </div>
 <?php } ?>

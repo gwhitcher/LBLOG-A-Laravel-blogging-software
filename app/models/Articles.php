@@ -2,7 +2,7 @@
 
 class Articles extends Eloquent {
 	
-	protected $fillable = array('category_id', 'title', 'date', 'slug', 'body', 'featured', 'metadescription', 'metakeywords', 'slider', 'updated_at');
+	protected $fillable = array('category_id', 'title', 'slug', 'body', 'featured', 'metadescription', 'metakeywords', 'slider', 'updated_at');
 	
 	public static $rules = array(
 				'title' => 'required|min:5',
@@ -15,9 +15,9 @@ class Articles extends Eloquent {
 		return Validator::make($input, static::$rules);
 	}
 	
-	public static function index()
+	public static function home()
 	{
-		return DB::table('articles')->where('status', '=', 0)->orderBy('id', 'desc')->paginate(Config::get('lblog_config.articles_per_page'));
+		return DB::table('articles')->where('status', '=', 0)->orderBy('id', 'DESC')->paginate(Config::get('lblog_config.articles_per_page'));
 	}
 	
 	public static function admin_articles()

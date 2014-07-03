@@ -14,7 +14,7 @@ Thank you for your interest in LBLOG!  To learn more please visit [http://www.ge
 
 ### ADMINISTRATION ###
 
-* Visit DOMAIN.COM/admin
+* Visit YOUR-DOMAIN.COM/admin
 * The default user and password is admin and administrator (once logged in it is suggested you change these immediately.  This can be done by visiting the users section of the administration.)
 
 ### QUESTIONS/COMMENTS ###

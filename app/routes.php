@@ -39,12 +39,12 @@ Route::any('admin/sidebar/create', array('as' => 'admin.sidebarcreate', 'uses' =
 Route::any('admin/sidebar/edit/{id}', array('as' => 'admin.sidebaredit', 'uses' => 'AdminController@sidebaredit'))->before('auth');
 Route::any('admin/sidebar/delete/{id}', array('as' => 'admin.sidebardelete', 'uses' => 'AdminController@sidebardelete'))->before('auth');
 
-
 Route::get('admin/dashboard', 'AdminController@dashboard')->before('auth');
 
 Route::any('admin/users', array('as' => 'admin.users', 'uses' => 'SessionsController@users'))->before('auth');
 Route::any('admin/user/create', array('as' => 'admin.usercreate', 'uses' => 'SessionsController@usercreate'))->before('auth');
 Route::any('admin/user/edit/{id}', array('as' => 'admin.useredit', 'uses' => 'SessionsController@useredit'))->before('auth');
+
 Route::get('admin', 'SessionsController@login');
 Route::get('login', 'SessionsController@login');
 Route::get('logout', 'SessionsController@destroy');

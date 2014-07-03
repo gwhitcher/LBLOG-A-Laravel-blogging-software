@@ -23,6 +23,8 @@
 	{{ Form::text("title") }}
     {{ Form::label("url", "URL") }}
 	{{ Form::text("url") }}
+    {{ Form::label("position", "Position") }}
+	{{ Form::text("position") }}
 	{{ Form::submit('Create') }}
 	{{ Form::close() }}
 @stop

@@ -4,7 +4,7 @@ class Nav extends Eloquent {
 	
 	protected $table = 'nav';
 	
-	protected $fillable = array('title', 'url');
+	protected $fillable = array('title', 'url', 'position');
 	
 	public static $rules = array(
 				'title' => 'required',

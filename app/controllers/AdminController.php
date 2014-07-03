@@ -248,8 +248,8 @@ class AdminController extends BaseController {
 	
 	public function navdelete($id)
 	{
-		$nav = Nav::find($id);
-		$nav->delete();
+		$nav_item = Nav::find($id);
+		$nav_item->delete();
 		return Redirect::intended('/admin/dashboard')->with('flash_message', 'Nav item deleted.');
 	}
 	

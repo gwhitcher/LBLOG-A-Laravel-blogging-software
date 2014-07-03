@@ -16,7 +16,6 @@ class CreateArticlesTable extends Migration {
 			$table->increments('id');
 			$table->integer('category_id');
 			$table->text('title');
-			$table->text('date');
 			$table->string('slug')->unique();
 			$table->text('body');
 			$table->text('featured');

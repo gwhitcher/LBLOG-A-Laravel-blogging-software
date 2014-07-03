@@ -4,7 +4,7 @@ class PagesController extends BaseController {
 	
 	public function show($slug)
 	{
-		$nav_items = Nav::all();
+		$nav_items = Nav::orderBy('position', 'ASC')->get();
 		$sidebar_items = Sidebar::orderBy('position', 'ASC')->get();
 		$pages = Pages::show($slug);
 		if (!empty($pages)) {

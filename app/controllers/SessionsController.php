@@ -36,10 +36,13 @@ class SessionsController extends BaseController {
 	public function useredit($id)
 	{
 		$user = User::find($id);
+		echo Session::get('username');
+		if(Auth::user()->id == $id) {
 		$input = Input::all();
 		if (!empty($input)) {
+		$current_password = $input['current_password'];	
 		$validation = User::validate($input);
-        if ($validation->passes())
+        if ($validation->passes() && Hash::check($current_password, $user->password))
         {
 			$user->username = $input['username'];
 			$user->email = $input['email'];
@@ -51,7 +54,10 @@ class SessionsController extends BaseController {
 			return Redirect::back()->with('flash_message', 'User errors.')->withErrors($validation);
 		}
 		}
-		return View::make('admin.useredit')->with('user', $user);	
+			return View::make('admin.useredit')->with('user', $user);
+		} else {
+			return Redirect::to('/admin/dashboard')->with('flash_message', 'That is not your profile!');
+		} 
 	}
 
 	public function store()
@@ -63,10 +69,13 @@ class SessionsController extends BaseController {
 			'password' => $input['password']
 		]);
 		
-		if ($attempt) return Redirect::intended('/admin/dashboard')->with('flash_message', 'You have been logged in!');
-		
-		return Redirect::back()->with('flash_message', 'Invalid login credentials!')->withInput();
-		
+		if ($attempt) {
+			return Redirect::intended('/admin/dashboard')->with('flash_message', 'You have been logged in!');
+			Session::put('username', Auth::user()->username);
+			Session::put('user_id', Auth::user()->id);
+		} else {
+			return Redirect::back()->with('flash_message', 'Invalid login credentials!')->withInput();
+		}
 	}
 
 	public function destroy()
