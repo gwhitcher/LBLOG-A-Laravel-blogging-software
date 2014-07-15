@@ -50,6 +50,11 @@ Route::get('login', 'SessionsController@login');
 Route::get('logout', 'SessionsController@destroy');
 Route::resource('sessions', 'SessionsController');
 
+//XML
+Route::any('sitemap', array('as' => 'sitemap', 'uses' => 'XMLController@sitemap'));
+Route::any('rss', array('as' => 'rss', 'uses' => 'XMLController@rss'));
+Route::any('feed', array('as' => 'rss', 'uses' => 'XMLController@rss'));
+
 //Contact Page
 Route::get('contact', 'ContactController@getContact');
 //Form request:: POST action will trigger to controller

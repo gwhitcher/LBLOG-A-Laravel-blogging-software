@@ -14,5 +14,4 @@ class PagesController extends BaseController {
 			return App::abort(404, 'Page not found');
 		}
 	}
-
 }
