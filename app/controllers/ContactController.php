@@ -24,8 +24,9 @@ class ContactController extends BaseController {
                 'last_name' => 'required|alpha',
                 'phone_number'=>'numeric|min:8',
                 'email' => 'required|email',
-                'message' => 'required|min:25',
+                'message' => 'required|min:25'/*,
 				'captcha' => array('required', 'captcha')
+                   */
             );
 
             //Validate data

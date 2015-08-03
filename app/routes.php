@@ -52,6 +52,7 @@ Route::resource('sessions', 'SessionsController');
 
 //XML
 Route::any('sitemap', array('as' => 'sitemap', 'uses' => 'XMLController@sitemap'));
+Route::any('sitemap.xml', array('as' => 'sitemap', 'uses' => 'XMLController@sitemap'));
 Route::any('rss', array('as' => 'rss', 'uses' => 'XMLController@rss'));
 Route::any('feed', array('as' => 'rss', 'uses' => 'XMLController@rss'));
 

@@ -33,13 +33,13 @@
 
             {{ Form:: label ('message', 'Message*' )}}
             {{ Form:: textarea ('message', '')}}
-            
+            <?php /* Old captcha code
             <div class="floatleft" style="clear: both;">
             {{ HTML::image(Captcha::img(), 'Captcha image') }}<br />
             {{ Form:: label ('captcha', 'CAPTCHA*' )}}
             {{ Form:: text ('captcha', '' )}}
             </div>
-            
+            */ ?>
             {{ Form::submit('Send', array('class' => '')) }}
 
             {{ Form:: close() }}
