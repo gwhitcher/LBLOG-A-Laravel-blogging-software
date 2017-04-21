@@ -194,3 +194,9 @@ article h2 {
 #footer p.copyright {
 	font-size: 12px;
 }
+
+/* ADS */
+.advertisement {
+	text-align: center;
+	margin: 10px;
+}
